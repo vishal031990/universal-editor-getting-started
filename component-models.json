@@ -214,5 +214,18 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "pokemon",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pokemonName",
+        "label": "Pokemon Name or ID",
+        "description": "Enter the name or ID of the Pokemon to display (e.g., pikachu, charizard, 25)",
+        "value": "pikachu"
+      }
+    ]
   }
 ]
