@@ -1,0 +1,35 @@
+{
+  "definitions": [
+    {
+      "title": "Pokemon",
+      "id": "pokemon",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Pokemon",
+              "model": "pokemon"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "pokemon",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "pokemonName",
+          "label": "Pokemon Name or ID",
+          "description": "Enter the name or ID of the Pokemon to display (e.g., pikachu, charizard, 25)",
+          "value": "pikachu"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}
