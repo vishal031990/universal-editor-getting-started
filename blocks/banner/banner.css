@@ -221,10 +221,6 @@
 
 /* Mobile Little Legacy (480px and below - vertical layout) */
 @media (max-width: 480px) {
-  /* Debug: Add border to verify mobile styles are applied */
-  .banner {
-    border: 3px solid red !important;
-  }
   .banner {
     background: #ffffff !important;
     background-image: none !important;
@@ -240,7 +236,7 @@
   .banner .banner-container {
     flex-direction: column !important;
     align-items: center !important;
-    padding: 0 24px !important;
+    padding: 24px !important;
     gap: 24px !important;
     max-width: 100% !important;
     min-height: auto !important;
@@ -253,6 +249,7 @@
     width: 100% !important;
     text-align: left !important;
     flex-shrink: 1 !important;
+    padding: 0 !important;
   }
   
   .banner h1 {
@@ -289,6 +286,20 @@
     height: 225px !important;
     overflow: hidden !important;
     border-radius: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .banner .banner-fg picture,
+  .banner .banner-bg picture {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .banner .banner-fg img,
+  .banner .banner-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
   
   .banner .banner-bg {
@@ -298,6 +309,7 @@
     max-width: 375px !important;
     height: 225px !important;
     border-radius: 0 !important;
+    margin-bottom: 0 !important;
   }
   
   .banner .banner-ctas {
