@@ -11,6 +11,8 @@ function collapseAll(container) {
   });
 }
 
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 export default function decorate(block) {
   block.classList.add('accordion');
 
@@ -24,8 +26,8 @@ export default function decorate(block) {
     const cols = [...row.children];
     if (cols.length === 0) return; // skip empties
 
-    const qText = cols[0].innerHTML.trim();
-    const answerHTML = cols[1] ? cols[1].innerHTML : '';
+  const questionSource = cols[0];
+  const answerSource = cols[1];
 
     const item = document.createElement('div');
     item.className = 'accordion-item';
@@ -38,7 +40,15 @@ export default function decorate(block) {
     btn.className = 'accordion-trigger';
     btn.setAttribute('aria-expanded', 'false');
     btn.setAttribute('aria-controls', panelId);
-    btn.innerHTML = `<span class="accordion-trigger-text">${qText}</span><span class="accordion-icon" aria-hidden="true"></span>`;
+    const triggerTextSpan = document.createElement('span');
+    triggerTextSpan.className = 'accordion-trigger-text';
+    // moveInstrumentation to keep authoring metadata
+    moveInstrumentation(questionSource, triggerTextSpan);
+    triggerTextSpan.innerHTML = questionSource.innerHTML.trim();
+    const iconSpan = document.createElement('span');
+    iconSpan.className = 'accordion-icon';
+    iconSpan.setAttribute('aria-hidden', 'true');
+    btn.append(triggerTextSpan, iconSpan);
 
     const panel = document.createElement('div');
     panel.id = panelId;
@@ -46,7 +56,15 @@ export default function decorate(block) {
     panel.hidden = true;
     panel.setAttribute('role', 'region');
     panel.setAttribute('aria-labelledby', triggerId);
-    panel.innerHTML = answerHTML;
+    if (answerSource) {
+      // Preserve original answer node(s) including instrumentation markers
+      const frag = document.createDocumentFragment();
+      [...answerSource.childNodes].forEach((n) => {
+        frag.append(n.cloneNode(true));
+      });
+      moveInstrumentation(answerSource, panel);
+      panel.append(frag);
+    }
 
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
