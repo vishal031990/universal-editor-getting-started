@@ -38,12 +38,14 @@
         {
           "component": "text",
           "name": "question",
+          "value": "",
           "label": "Question",
           "valueType": "string"
         },
         {
           "component": "richtext",
           "name": "answer",
+          "value": "",
           "label": "Answer",
           "valueType": "string"
         }
