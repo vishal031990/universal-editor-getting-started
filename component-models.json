@@ -147,16 +147,16 @@
       {
         "component": "text",
         "name": "question",
-        "value": "",
         "label": "Question",
-        "valueType": "string"
+        "valueType": "string",
+        "value": "Sample question"
       },
       {
         "component": "richtext",
         "name": "answer",
-        "value": "",
         "label": "Answer",
-        "valueType": "string"
+        "valueType": "string",
+        "value": "<p>Sample answer text</p>"
       }
     ]
   },
