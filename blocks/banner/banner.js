@@ -20,58 +20,57 @@ export default function decorate(block) {
     description: '',
     footnote: '',
     ctas: [],
-    fg: null,
-    bg: null,
+    fgRow: null,
+    bgRow: null,
   };
 
+  // Parse content and identify image rows
   rows.forEach((row, i) => {
     const cells = [...row.children];
     const cellContent = cells[0];
     
-    if (!cellContent) return; // Skip empty rows
+    if (!cellContent) return;
     
     const textContent = cellContent.textContent.trim();
-    const img = cellContent.querySelector('img');
+    const hasPicture = cellContent.querySelector('picture');
     
-    console.log(`Row ${i}:`, textContent || (img ? 'HAS IMAGE' : 'EMPTY'));
+    console.log(`Row ${i}:`, textContent || (hasPicture ? 'HAS IMAGE' : 'EMPTY'));
     
-    // Simplified row parsing structure
     if (i === 0) {
-      // Row 0: Title
       data.title = cellContent.innerHTML;
     } else if (i === 1) {
-      // Row 1: Description
       data.description = cellContent.innerHTML;
-    } else if (i === 2 && img) {
-      // Row 2: Foreground Image
-      data.fg = img;
-      console.log('Found foreground image:', img.src);
-    } else if (i === 3 && img) {
-      // Row 3: Background Image
-      data.bg = img;
-      console.log('Found background image:', img.src);
+    } else if (i === 2 && hasPicture) {
+      data.fgRow = row; // Keep the whole row for processing later
+      console.log('Found foreground image row');
+    } else if (i === 3 && hasPicture) {
+      data.bgRow = row; // Keep the whole row for processing later
+      console.log('Found background image row');
     } else if (i === 4 && textContent) {
-      // Row 4: Footnote
       data.footnote = cellContent.innerHTML;
     } else if (i === 5 && textContent) {
-      // Row 5: CTA Text - get link from next row
       const nextRow = rows[i + 1];
       if (nextRow) {
         const nextCells = [...nextRow.children];
         const ctaLink = nextCells[0] ? nextCells[0].textContent.trim() : '#';
         const href = ctaLink.startsWith('http') ? ctaLink : `https://${ctaLink}`;
-        data.ctas.push({ text: textContent, href });
+        data.ctas.push({ text: textContent, href, style: 'primary' });
+      }
+    } else if (i === 7 && textContent) {
+      // Row 7: Secondary CTA Text - get link from next row
+      const nextRow = rows[i + 1];
+      if (nextRow) {
+        const nextCells = [...nextRow.children];
+        const ctaLink = nextCells[0] ? nextCells[0].textContent.trim() : '#';
+        const href = ctaLink.startsWith('http') ? ctaLink : `https://${ctaLink}`;
+        data.ctas.push({ text: textContent, href, style: 'secondary' });
       }
     }
   });
 
-  // Debug: log the parsed data
   console.log('Banner data parsed:', data);
 
-  // clear block
-  block.textContent = '';
-
-  // Create main container structure
+  // Create new structure
   const container = document.createElement('div');
   container.className = 'banner-container';
 
@@ -110,7 +109,7 @@ export default function decorate(block) {
       const a = document.createElement('a');
       a.textContent = c.text;
       a.href = c.href;
-      a.className = 'banner-cta-primary';
+      a.className = `banner-cta-${c.style || 'primary'}`;
       a.setAttribute('role', 'button');
       ctasDiv.append(a);
     });
@@ -118,29 +117,40 @@ export default function decorate(block) {
   }
 
   container.append(content);
+
+  // Clear and rebuild block
+  block.textContent = '';
   block.append(container);
 
-  // Background picture
-  if (data.bg && data.bg.src) {
-    const bgPic = createOptimizedPicture(data.bg.src, data.bg.alt || '', false, []);
-    moveInstrumentation(data.bg, bgPic.querySelector('img'));
-    bgPic.classList.add('banner-bg');
-    block.append(bgPic);
-
-    // Add gradient overlay when background image exists
+  // Add background image if exists
+  if (data.bgRow) {
+    const bgDiv = document.createElement('div');
+    bgDiv.className = 'banner-bg';
+    moveInstrumentation(data.bgRow, bgDiv);
+    bgDiv.append(...data.bgRow.children);
+    block.append(bgDiv);
+    
+    // Add gradient overlay
     const overlay = document.createElement('div');
     overlay.className = 'banner-gradient-overlay';
     block.append(overlay);
   } else {
-    // No background image, add a class to use CSS gradient only
     block.classList.add('banner-no-bg');
   }
 
-  // Foreground image
-  if (data.fg && data.fg.src) {
-    const fgPic = createOptimizedPicture(data.fg.src, data.fg.alt || '', false, []);
-    moveInstrumentation(data.fg, fgPic.querySelector('img'));
-    fgPic.classList.add('banner-fg');
-    block.append(fgPic);
+  // Add foreground image if exists  
+  if (data.fgRow) {
+    const fgDiv = document.createElement('div');
+    fgDiv.className = 'banner-fg';
+    moveInstrumentation(data.fgRow, fgDiv);
+    fgDiv.append(...data.fgRow.children);
+    block.append(fgDiv);
   }
+
+  // Optimize all images like cards.js does
+  block.querySelectorAll('picture > img').forEach((img) => {
+    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    moveInstrumentation(img, optimizedPic.querySelector('img'));
+    img.closest('picture').replaceWith(optimizedPic);
+  });
 }
