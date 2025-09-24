@@ -20,18 +20,50 @@
     {
       "id": "banner",
       "fields": [
-        { "component": "text", "name": "title", "label": "Title", "valueType": "string", "value": "Sample Banner Title" },
-        { "component": "richtext", "name": "description", "label": "Description", "valueType": "string", "value": "<p>Sample description text</p>" },
-        { "component": "reference", "name": "image", "label": "Foreground Image", "valueType": "string", "multi": false },
-        { "component": "text", "name": "imageAlt", "label": "Foreground Image Alt", "valueType": "string", "value": "" },
-        { "component": "reference", "name": "backgroundImage", "label": "Background Image", "valueType": "string", "multi": false },
-        { "component": "text", "name": "backgroundImageAlt", "label": "Background Image Alt", "valueType": "string", "value": "" },
-        { "component": "text", "name": "cta1Text", "label": "CTA 1 Text", "valueType": "string", "value": "Primary Action" },
-        { "component": "aem-content", "name": "cta1Link", "label": "CTA 1 Link" },
-        { "component": "text", "name": "cta1Style", "label": "CTA 1 Style", "valueType": "string", "value": "primary" },
-        { "component": "text", "name": "cta2Text", "label": "CTA 2 Text", "valueType": "string", "value": "Secondary Action" },
-        { "component": "aem-content", "name": "cta2Link", "label": "CTA 2 Link" },
-        { "component": "text", "name": "cta2Style", "label": "CTA 2 Style", "valueType": "string", "value": "secondary" }
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Banner Title",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "description",
+          "label": "Banner Description",
+          "valueType": "string"
+        },
+        {
+          "component": "reference",
+          "name": "foregroundImage",
+          "label": "Foreground Image",
+          "valueType": "string",
+          "multi": false
+        },
+        {
+          "component": "reference",
+          "name": "backgroundImage",
+          "label": "Background Image",
+          "valueType": "string",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "name": "footnote",
+          "label": "Footnote Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "cta",
+          "label": "CTA Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "ctaHref",
+          "label": "CTA Link",
+          "valueType": "string"
+        }
       ]
     }
   ],

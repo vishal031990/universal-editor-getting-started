@@ -166,30 +166,21 @@
       {
         "component": "text",
         "name": "title",
-        "label": "Title",
-        "valueType": "string",
-        "value": "Sample Banner Title"
-      },
-      {
-        "component": "richtext",
-        "name": "description",
-        "label": "Description",
-        "valueType": "string",
-        "value": "<p>Sample description text</p>"
-      },
-      {
-        "component": "reference",
-        "name": "image",
-        "label": "Foreground Image",
-        "valueType": "string",
-        "multi": false
+        "label": "Banner Title",
+        "valueType": "string"
       },
       {
         "component": "text",
-        "name": "imageAlt",
-        "label": "Foreground Image Alt",
+        "name": "description",
+        "label": "Banner Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "foregroundImage",
+        "label": "Foreground Image",
         "valueType": "string",
-        "value": ""
+        "multi": false
       },
       {
         "component": "reference",
@@ -200,48 +191,21 @@
       },
       {
         "component": "text",
-        "name": "backgroundImageAlt",
-        "label": "Background Image Alt",
-        "valueType": "string",
-        "value": ""
+        "name": "footnote",
+        "label": "Footnote Text",
+        "valueType": "string"
       },
       {
         "component": "text",
-        "name": "cta1Text",
-        "label": "CTA 1 Text",
-        "valueType": "string",
-        "value": "Primary Action"
-      },
-      {
-        "component": "aem-content",
-        "name": "cta1Link",
-        "label": "CTA 1 Link"
+        "name": "cta",
+        "label": "CTA Text",
+        "valueType": "string"
       },
       {
         "component": "text",
-        "name": "cta1Style",
-        "label": "CTA 1 Style",
-        "valueType": "string",
-        "value": "primary"
-      },
-      {
-        "component": "text",
-        "name": "cta2Text",
-        "label": "CTA 2 Text",
-        "valueType": "string",
-        "value": "Secondary Action"
-      },
-      {
-        "component": "aem-content",
-        "name": "cta2Link",
-        "label": "CTA 2 Link"
-      },
-      {
-        "component": "text",
-        "name": "cta2Style",
-        "label": "CTA 2 Style",
-        "valueType": "string",
-        "value": "secondary"
+        "name": "ctaHref",
+        "label": "CTA Link",
+        "valueType": "string"
       }
     ]
   },

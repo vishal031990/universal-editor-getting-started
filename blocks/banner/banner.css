@@ -1,19 +1,224 @@
-.banner-container .banner-wrapper { max-width: unset; padding: 0; }
+/* Banner Container Setup */
+.banner-container .banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
 
-.banner { position: relative; overflow: hidden; padding: 60px 24px; display: flex; flex-direction: column; gap: 24px; min-height: 320px; }
-.banner-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
-.banner h1 { margin: 0 0 16px; font-size: clamp(2rem, 6vw, 3rem); }
-.banner .banner-description { margin: 0 0 24px; }
-.banner .banner-ctas { display: flex; flex-wrap: wrap; gap: 16px; }
-.banner .banner-ctas a { text-decoration: none; font-weight: 600; padding: 12px 24px; border-radius: 4px; }
-.banner .banner-ctas a.primary { background: var(--link-color); color: #fff; }
-.banner .banner-ctas a.secondary { background: #fff; color: var(--link-color); border: 2px solid var(--link-color); }
+/* Main Banner Styles */
+.banner {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #772bcb 0%, #9c4adb 100%);
+}
 
-.banner picture.banner-bg { position: absolute; inset: 0; z-index: 0; }
-.banner picture.banner-bg img { width: 100%; height: 100%; object-fit: cover; }
-.banner picture.banner-fg { position: absolute; bottom: 0; right: 0; width: min(40%, 500px); z-index: 1; }
-.banner picture.banner-fg img { width: 100%; height: auto; object-fit: contain; }
+/* Banner without background image - use stronger gradient */
+.banner.banner-no-bg {
+  background: linear-gradient(135deg, #772bcb 0%, #9c4adb 50%, #b862e8 100%);
+}
 
-@media (width >= 900px) { .banner { padding: 80px 48px; flex-direction: row; align-items: center; }
-  .banner-inner { max-width: 60%; }
+/* Banner Container Layout */
+.banner .banner-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  padding: 113px 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+/* Content Styling */
+.banner .banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 551px;
+}
+
+/* Typography */
+.banner h1 {
+  margin: 0;
+  font-family: 'Avenir Next LT Pro', var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--banner-heading-size);
+  line-height: var(--banner-heading-line-height);
+  color: var(--banner-text-inverse);
+  letter-spacing: -0.5px;
+}
+
+.banner .banner-description {
+  margin: 0;
+  font-family: 'Avenir Next', var(--body-font-family);
+  font-weight: 600;
+  font-size: var(--banner-subheading-size);
+  line-height: var(--banner-subheading-line-height);
+  color: var(--banner-text-inverse);
+  letter-spacing: -0.5px;
+}
+
+.banner .banner-footnote {
+  margin: 0;
+  font-family: 'Avenir Next', var(--body-font-family);
+  font-weight: 500;
+  font-size: var(--banner-footnote-size);
+  line-height: var(--banner-footnote-line-height);
+  color: var(--banner-text-inverse);
+}
+
+.banner .banner-footnote a {
+  color: var(--banner-text-inverse);
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.banner .banner-footnote a:hover {
+  color: var(--banner-text-inverse);
+  opacity: 0.8;
+}
+
+/* CTA Buttons */
+.banner .banner-ctas {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.banner .banner-cta-primary,
+.banner .banner-cta-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 6px;
+  font-family: 'Avenir Next', var(--body-font-family);
+  font-weight: 600;
+  font-size: var(--banner-button-size);
+  line-height: var(--banner-button-line-height);
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.banner .banner-cta-primary {
+  background: var(--banner-brand-primary);
+  color: var(--banner-text-inverse);
+}
+
+.banner .banner-cta-primary:hover {
+  background: #6a25b3;
+  color: var(--banner-text-inverse);
+  text-decoration: none;
+}
+
+.banner .banner-cta-secondary {
+  background: var(--banner-text-inverse);
+  color: var(--banner-brand-primary);
+  border-color: var(--banner-brand-primary);
+}
+
+.banner .banner-cta-secondary:hover {
+  background: #f8f8f8;
+  color: var(--banner-brand-primary);
+  text-decoration: none;
+}
+
+/* Background Image */
+.banner picture.banner-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.banner picture.banner-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient Overlay */
+.banner .banner-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to right, var(--banner-overlay-end) 0%, var(--banner-overlay-start) 100%);
+}
+
+/* Foreground Decorative Image */
+.banner picture.banner-fg {
+  position: absolute;
+  right: 120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 551px;
+  height: 375px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.banner picture.banner-fg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Responsive Design */
+@media (width < 900px) {
+  .banner {
+    min-height: 100vh;
+  }
+  
+  .banner .banner-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 24px;
+    text-align: center;
+  }
+  
+  .banner .banner-content {
+    order: 2;
+    max-width: 100%;
+  }
+  
+  .banner picture.banner-fg {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    height: 300px;
+    order: 1;
+  }
+  
+  .banner .banner-ctas {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (width < 600px) {
+  .banner .banner-container {
+    padding: 40px 16px;
+  }
+  
+  .banner .banner-ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .banner .banner-cta-primary,
+  .banner .banner-cta-secondary {
+    width: 100%;
+    max-width: 280px;
+  }
 }
