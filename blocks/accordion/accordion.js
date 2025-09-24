@@ -38,11 +38,11 @@ export default function decorate(block) {
     // Preserve instrumentation for the accordion-item itself (row level)
     moveInstrumentation(row, item);
 
-    const btn = document.createElement("button");
+    const btn = document.createElement("div");
     const triggerId = `accordion-trigger-${index}`;
     const panelId = `accordion-panel-${index}`;
     btn.id = triggerId;
-    btn.type = "button";
+    btn.type = "div";
     btn.className = "accordion-trigger";
     btn.setAttribute("aria-expanded", "false");
     btn.setAttribute("aria-controls", panelId);

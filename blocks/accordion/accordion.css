@@ -3,6 +3,7 @@
   /* from design tokens (Lupin) */
   width: 100%;
   font-family: var(--body-font-family);
+
 }
 
 .accordion-items {
@@ -63,7 +64,6 @@
   left: 50%;
   width: 14px;
   height: 2px;
-  background: var(--accordion-accent);
   transform: translate(-50%, -50%);
   transition: transform 0.25s ease;
 }
