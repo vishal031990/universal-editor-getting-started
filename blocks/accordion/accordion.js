@@ -19,6 +19,8 @@ export default function decorate(block) {
   block.classList.add("accordion");
 
   const single = block.dataset.single === "true"; // optional author metadata to allow only one open
+  // Heuristic to detect Universal Editor authoring context (presence of instrumentation root attributes)
+  const inEditor = !!document.querySelector("[data-aue-resource]");
 
   const rows = [...block.children];
   const wrapper = document.createElement("div");
@@ -33,6 +35,8 @@ export default function decorate(block) {
 
     const item = document.createElement("div");
     item.className = "accordion-item";
+    // Preserve instrumentation for the accordion-item itself (row level)
+    moveInstrumentation(row, item);
 
     const btn = document.createElement("button");
     const triggerId = `accordion-trigger-${index}`;
@@ -44,9 +48,12 @@ export default function decorate(block) {
     btn.setAttribute("aria-controls", panelId);
     const triggerTextSpan = document.createElement("span");
     triggerTextSpan.className = "accordion-trigger-text";
-    // moveInstrumentation to keep authoring metadata
+    // moveInstrumentation to keep authoring metadata for the question cell itself
     moveInstrumentation(questionSource, triggerTextSpan);
-    triggerTextSpan.innerHTML = questionSource.innerHTML.trim();
+    // move (not clone) all child nodes to preserve any nested instrumentation
+    while (questionSource.firstChild) {
+      triggerTextSpan.append(questionSource.firstChild);
+    }
     const iconSpan = document.createElement("span");
     iconSpan.className = "accordion-icon";
     iconSpan.setAttribute("aria-hidden", "true");
@@ -59,13 +66,20 @@ export default function decorate(block) {
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-labelledby", triggerId);
     if (answerSource) {
-      // Preserve original answer node(s) including instrumentation markers
-      const frag = document.createDocumentFragment();
-      [...answerSource.childNodes].forEach((n) => {
-        frag.append(n.cloneNode(true));
-      });
-      moveInstrumentation(answerSource, panel);
-      panel.append(frag);
+      // Create a wrapper for answer content so we can retain instrumentation cleanly
+      const answerWrapper = document.createElement("div");
+      answerWrapper.className = "accordion-answer";
+      moveInstrumentation(answerSource, answerWrapper);
+      while (answerSource.firstChild) {
+        answerWrapper.append(answerSource.firstChild); // move nodes preserves richtext markers
+      }
+      panel.append(answerWrapper);
+    }
+
+    // In editor, expand the first item by default so rich text becomes immediately editable
+    if (inEditor && index === 0) {
+      btn.setAttribute("aria-expanded", "true");
+      panel.hidden = false;
     }
 
     btn.addEventListener("click", () => {
