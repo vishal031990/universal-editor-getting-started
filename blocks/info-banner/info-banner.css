@@ -207,11 +207,15 @@
 
 /* Alternative banner types */
 .info-banner.error .accent-bar {
-  background-color: #dc2626;
+  background-color: #da3d10;
 }
 
 .info-banner.error {
-  background-color: #fef2f2;
+  background-color: #fcf3f2;
+}
+
+.info-banner.error .link {
+  color: #da3d00;
 }
 
 .info-banner.success .accent-bar {
