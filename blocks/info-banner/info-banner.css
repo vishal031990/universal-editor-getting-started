@@ -1,0 +1,231 @@
+/* Info Banner Block Styles - Converted from Figma Design */
+
+.info-banner {
+  background-color: #fff8f2;
+  border-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  min-height: fit-content;
+}
+
+.info-banner .accent-bar {
+  background-color: #ff8e26;
+  border-radius: 6px 0 0 6px;
+  width: 8px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.info-banner .banner-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 6px;
+  min-height: 1px;
+  min-width: 1px;
+  box-sizing: border-box;
+}
+
+.info-banner .content-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.info-banner .warning-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.info-banner .warning-icon svg,
+.info-banner .warning-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  max-width: none;
+}
+
+.info-banner .inner-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  min-height: 1px;
+  min-width: 1px;
+  flex-shrink: 0;
+}
+
+.info-banner .alert-title {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #1d1d1d;
+  font-size: 16px;
+  line-height: 24px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.info-banner .alert-description {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #1d1d1d;
+  font-size: 16px;
+  line-height: 24px;
+  min-width: 100%;
+  flex-shrink: 0;
+  width: min-content;
+}
+
+.info-banner .alert-description p {
+  margin: 0;
+  line-height: 24px;
+}
+
+.info-banner .actions {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.info-banner .button {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.info-banner .button-text {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #772bcb;
+  font-size: 16px;
+  line-height: 24px;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.info-banner .button-text:hover {
+  text-decoration: underline;
+}
+
+.info-banner .link {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #ff8e26;
+  font-size: 16px;
+  line-height: 24px;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  flex-shrink: 0;
+}
+
+.info-banner .link:hover {
+  text-decoration-thickness: 2px;
+}
+
+.info-banner .close-button {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.info-banner .close-button svg,
+.info-banner .close-button img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  max-width: none;
+}
+
+.info-banner .close-button:hover {
+  opacity: 0.7;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .info-banner .banner-content {
+    padding: 12px;
+  }
+  
+  .info-banner .content-wrapper {
+    gap: 6px;
+  }
+  
+  .info-banner .actions {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .info-banner .alert-title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .info-banner .alert-description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .info-banner .button-text,
+  .info-banner .link {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+/* Hidden state for dismissible banner */
+.info-banner.hidden {
+  display: none;
+}
+
+/* Alternative banner types */
+.info-banner.error .accent-bar {
+  background-color: #dc2626;
+}
+
+.info-banner.error {
+  background-color: #fef2f2;
+}
+
+.info-banner.success .accent-bar {
+  background-color: #16a34a;
+}
+
+.info-banner.success {
+  background-color: #f0fdf4;
+}
+
+.info-banner.info .accent-bar {
+  background-color: #2563eb;
+}
+
+.info-banner.info {
+  background-color: #eff6ff;
+}

@@ -1,0 +1,108 @@
+{
+  "definitions": [
+    {
+      "title": "Info Banner",
+      "id": "info-banner",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Info Banner",
+              "model": "info-banner"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "info-banner",
+      "fields": [
+        {
+          "component": "select",
+          "name": "bannerType",
+          "label": "Banner Type",
+          "valueType": "string",
+          "value": "warning",
+          "options": [
+            {
+              "name": "Warning",
+              "value": "warning"
+            },
+            {
+              "name": "Error",
+              "value": "error"
+            },
+            {
+              "name": "Success",
+              "value": "success"
+            },
+            {
+              "name": "Info",
+              "value": "info"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Alert Title",
+          "valueType": "string",
+          "value": "Alert Title",
+          "required": true
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "label": "Alert Description",
+          "valueType": "string",
+          "value": "<p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries.</p>",
+          "required": true
+        },
+        {
+          "component": "text",
+          "name": "buttonText",
+          "label": "Button Text",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "name": "buttonLink",
+          "label": "Button Link",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "name": "linkText",
+          "label": "Link Text",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "name": "linkUrl",
+          "label": "Link URL",
+          "valueType": "string",
+          "value": ""
+        },
+        {
+          "component": "boolean",
+          "name": "showCloseButton",
+          "label": "Show Close Button",
+          "valueType": "boolean",
+          "value": true
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "info-banner",
+      "components": ["info-banner"]
+    }
+  ]
+}

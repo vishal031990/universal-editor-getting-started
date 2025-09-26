@@ -47,5 +47,11 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "info-banner",
+    "components": [
+      "info-banner"
+    ]
   }
 ]
