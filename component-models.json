@@ -271,6 +271,75 @@
     ]
   },
   {
+    "id": "banner-v2",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "statusText",
+        "label": "Status Badge Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "statusIcon",
+        "label": "Status Icon",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Inline Link Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "linkUrl",
+        "label": "Inline Link URL",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "foregroundImage",
+        "label": "Foreground Image",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "metaDesigner",
+        "label": "Designer",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "metaUpdated",
+        "label": "Last Updated",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "metaVersion",
+        "label": "Version",
+        "valueType": "string",
+        "value": "1.0.0"
+      }
+    ]
+  },
+  {
     "id": "banner",
     "fields": [
       {
