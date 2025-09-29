@@ -20,7 +20,7 @@ function getText(row) { return getCell(row)?.textContent?.trim() || ""; }
 function getHTML(row) { return getCell(row)?.innerHTML?.trim() || ""; }
 
 export default function decorate(block) {
-  block.classList.add("banner-v2");
+  block.classList.add("banner-v3");
 
   const rows = [...block.children];
 

@@ -18,7 +18,7 @@
   ],
   "models": [
     {
-      "id": "banner-v2",
+      "id": "banner-v3",
       "fields": [
         { "component": "text", "name": "heading", "label": "Heading", "valueType": "string", "required": true },
         { "component": "richtext", "name": "description", "label": "Description", "valueType": "string" },
