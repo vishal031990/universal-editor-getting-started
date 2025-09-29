@@ -1,9 +1,9 @@
-/* Banner V2 (Hero Banner) - generated from Figma component
+/* Banner V3 (Hero Banner) - generated from Figma component
  * Responsive hero banner with optional foreground image, status badge, meta list and heading.
  * All absolute positioning from design removed, converted to fluid flex layout.
  */
 
-.banner-v2 { 
+.banner-v3 { 
   --banner-radius: 80px; /* from design */
   --banner-bg: #f4eefb; /* Interaction colours/Pukaki */
   --color-text: #1d1d1d; /* NZ Black */
@@ -24,7 +24,7 @@
   box-shadow: 0 24px 38px 0 rgba(0,0,0,0.1), 0 11px 15px rgba(0,0,0,0.1);
 }
 
-.banner-v2 .banner-inner { 
+.banner-v3 .banner-inner { 
   background: var(--banner-bg);
   padding: var(--top-bottom-pad-desktop) var(--side-pad-desktop);
   display: flex;
@@ -33,7 +33,7 @@
   min-height: 100%;
 }
 
-.banner-v2 .content { 
+.banner-v3 .content { 
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
   max-width: var(--content-max);
 }
 
-.banner-v2 .top-line { 
+.banner-v3 .top-line { 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,13 +49,13 @@
   flex-wrap: wrap;
 }
 
-.banner-v2 .logo-row { 
+.banner-v3 .logo-row { 
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.banner-v2 .logo { 
+.banner-v3 .logo { 
   height: 30px;
   width: 76px;
   position: relative;
@@ -63,7 +63,7 @@
   flex-shrink: 0;
 }
 
-.banner-v2 .status-and-links { 
+.banner-v3 .status-and-links { 
   display: flex;
   gap: 24px;
   align-items: center;
@@ -72,7 +72,7 @@
   flex-wrap: wrap;
 }
 
-.banner-v2 .status-badge { 
+.banner-v3 .status-badge { 
   background: var(--color-success-bg);
   display: flex;
   align-items: center;
@@ -83,31 +83,31 @@
   font: 500 16px/24px "Avenir Next", sans-serif;
 }
 
-.banner-v2 .status-badge .icon { 
+.banner-v3 .status-badge .icon { 
   width: 24px;
   height: 24px;
   position: relative;
   flex-shrink: 0;
 }
 
-.banner-v2 .links { 
+.banner-v3 .links { 
   display: flex;
   gap: 24px;
   align-items: center;
 }
 
-.banner-v2 a.inline-link { 
+.banner-v3 a.inline-link { 
   font: 600 16px/24px "Avenir Next", sans-serif;
   color: var(--color-brand);
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
 
-.banner-v2 a.inline-link:hover { 
+.banner-v3 a.inline-link:hover { 
   opacity: 0.85;
 }
 
-.banner-v2 .hero-heading { 
+.banner-v3 .hero-heading { 
   font: 600 60px/68px "Avenir Next", sans-serif; /* Big/Heading L */
   letter-spacing: -0.5px;
   color: var(--color-text);
@@ -115,13 +115,13 @@
   word-break: break-word;
 }
 
-.banner-v2 .description { 
+.banner-v3 .description { 
   font: 500 16px/24px "Avenir Next", sans-serif;
   color: var(--color-text);
   margin: 0;
 }
 
-.banner-v2 .meta-panel { 
+.banner-v3 .meta-panel { 
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -129,7 +129,7 @@
   flex-shrink: 0;
 }
 
-.banner-v2 .meta-group { 
+.banner-v3 .meta-group { 
   border-top: 1px solid #bababa;
   padding: 6px 12px;
   display: flex;
@@ -138,16 +138,16 @@
   font: 500 16px/24px "Avenir Next", sans-serif;
 }
 
-.banner-v2 .meta-group:first-child { 
+.banner-v3 .meta-group:first-child { 
   border-top: none;
 }
 
-.banner-v2 .meta-label { 
+.banner-v3 .meta-label { 
   font-weight: 600;
 }
 
 /* Optional foreground image placeholder (extend later) */
-.banner-v2 .foreground-image { 
+.banner-v3 .foreground-image { 
   max-width: 100%;
   height: auto;
   display: block;
@@ -155,23 +155,23 @@
 
 /* Responsive */
 @media (max-width: 1200px) { 
-  .banner-v2 .hero-heading { font-size: 50px; line-height: 58px; } /* Big/Heading M */
+  .banner-v3 .hero-heading { font-size: 50px; line-height: 58px; } /* Big/Heading M */
 }
 
 @media (max-width: 992px) { 
-  .banner-v2 .banner-inner { flex-direction: column; gap: 48px; }
-  .banner-v2 .meta-panel { flex-direction: row; flex-wrap: wrap; width: 100%; }
-  .banner-v2 .meta-group { flex: 1 1 200px; }
-  .banner-v2 { border-radius: 60px; }
+  .banner-v3 .banner-inner { flex-direction: column; gap: 48px; }
+  .banner-v3 .meta-panel { flex-direction: row; flex-wrap: wrap; width: 100%; }
+  .banner-v3 .meta-group { flex: 1 1 200px; }
+  .banner-v3 { border-radius: 60px; }
 }
 
 @media (max-width: 768px) { 
-  .banner-v2 .banner-inner { padding: var(--top-bottom-pad-mobile) var(--side-pad-mobile); }
-  .banner-v2 { border-radius: 40px; }
-  .banner-v2 .hero-heading { font-size: 42px; line-height: 50px; }
+  .banner-v3 .banner-inner { padding: var(--top-bottom-pad-mobile) var(--side-pad-mobile); }
+  .banner-v3 { border-radius: 40px; }
+  .banner-v3 .hero-heading { font-size: 42px; line-height: 50px; }
 }
 
 @media (max-width: 480px) { 
-  .banner-v2 .hero-heading { font-size: 32px; line-height: 40px; }
-  .banner-v2 { border-radius: 32px; }
+  .banner-v3 .hero-heading { font-size: 32px; line-height: 40px; }
+  .banner-v3 { border-radius: 32px; }
 }
