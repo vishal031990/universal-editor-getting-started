@@ -21,15 +21,15 @@
       "id": "banner-v3",
       "fields": [
         { "component": "text", "name": "heading", "label": "Heading", "valueType": "string", "required": true },
-        { "component": "richtext", "name": "description", "label": "Description", "valueType": "string" },
-        { "component": "text", "name": "statusText", "label": "Status Badge Text", "valueType": "string" },
-        { "component": "reference", "name": "statusIcon", "label": "Status Icon", "valueType": "string", "multi": false },
-        { "component": "text", "name": "linkText", "label": "Inline Link Text", "valueType": "string" },
-        { "component": "text", "name": "linkUrl", "label": "Inline Link URL", "valueType": "string" },
+        { "component": "richtext", "name": "subheading", "label": "Subheading / Description", "valueType": "string" },
+        { "component": "richtext", "name": "terms", "label": "Terms / Footnote", "valueType": "string" },
+        { "component": "text", "name": "primaryCtaText", "label": "Primary CTA Text", "valueType": "string" },
+        { "component": "text", "name": "primaryCtaUrl", "label": "Primary CTA URL", "valueType": "string" },
+        { "component": "text", "name": "secondaryCtaText", "label": "Secondary CTA Text", "valueType": "string" },
+        { "component": "text", "name": "secondaryCtaUrl", "label": "Secondary CTA URL", "valueType": "string" },
+        { "component": "reference", "name": "backgroundImage", "label": "Background Image", "valueType": "string", "multi": false },
         { "component": "reference", "name": "foregroundImage", "label": "Foreground Image", "valueType": "string", "multi": false },
-        { "component": "text", "name": "metaDesigner", "label": "Designer", "valueType": "string" },
-        { "component": "text", "name": "metaUpdated", "label": "Last Updated", "valueType": "string" },
-        { "component": "text", "name": "metaVersion", "label": "Version", "valueType": "string", "value": "1.0.0" }
+        { "component": "boolean", "name": "overlayGradient", "label": "Enable Overlay Gradient", "valueType": "boolean", "value": true }
       ]
     }
   ],

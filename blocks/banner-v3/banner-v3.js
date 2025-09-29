@@ -1,159 +1,143 @@
 import { moveInstrumentation } from "../../scripts/scripts.js";
 
-/* Banner V2 (Hero Banner)
- * Authoring table structure (rows):
- * 0: Heading (rich text or text)
- * 1: Subheading / Description (rich text)
- * 2: Status Badge Text (e.g. "Designed and developed")
- * 3: Status Badge Icon (optional image)
- * 4: Inline Link Text (optional)
- * 5: Inline Link URL (optional)
- * 6: Foreground Image (optional image)
- * 7: Meta: Designer (optional)
- * 8: Meta: Last Updated (optional)
- * 9: Meta: Version (optional)
- * Additional rows ignored for now
+/* Banner V3 Hero Refactor
+ * New authoring table structure (rows):
+ * 0: Heading (text or richtext)
+ * 1: Subheading (text or richtext)
+ * 2: Terms (rich text - can include links)
+ * 3: Primary CTA Text
+ * 4: Primary CTA URL
+ * 5: Secondary CTA Text
+ * 6: Secondary CTA URL
+ * 7: Background Image (optional image)
+ * 8: Foreground Image (optional image)
+ * 9: Overlay Gradient (boolean text: "true" / "false" / blank)
  */
 
-function getCell(row) { return row?.children?.[0]; }
-function getText(row) { return getCell(row)?.textContent?.trim() || ""; }
-function getHTML(row) { return getCell(row)?.innerHTML?.trim() || ""; }
+function firstCell(row) { return row?.querySelector(':scope > div'); }
+function cellHTML(row) { return firstCell(row)?.innerHTML?.trim() || ''; }
+function cellText(row) { return firstCell(row)?.textContent?.trim() || ''; }
+function cellImage(row) {
+  const c = firstCell(row);
+  if (!c) return null;
+  const img = c.querySelector('picture, img');
+  return img ? img.cloneNode(true) : null;
+}
 
 export default function decorate(block) {
-  block.classList.add("banner-v3");
+  block.classList.add('banner-v3');
 
   const rows = [...block.children];
 
   const data = {
-    heading: getText(rows[0]) || "Hero banner",
-    description: getHTML(rows[1]) || "",
-    statusText: getText(rows[2]) || "",
-    statusIcon: null,
-    linkText: getText(rows[4]) || "",
-    linkUrl: getText(rows[5]) || "",
-    foregroundImage: null,
-    metaDesigner: getText(rows[7]) || "-",
-    metaUpdated: getText(rows[8]) || "-",
-    metaVersion: getText(rows[9]) || "1.0.0",
+    heading: cellText(rows[0]) || 'Hero heading',
+    subheading: cellHTML(rows[1]) || '',
+    terms: cellHTML(rows[2]) || '',
+    primaryText: cellText(rows[3]) || '',
+    primaryUrl: cellText(rows[4]) || '',
+    secondaryText: cellText(rows[5]) || '',
+    secondaryUrl: cellText(rows[6]) || '',
+    background: cellImage(rows[7]),
+    foreground: cellImage(rows[8]),
+    overlay: (cellText(rows[9]) || 'true').toLowerCase() !== 'false',
   };
 
-  // Extract possible images (status icon & foreground)
-  const statusIconCell = getCell(rows[3]);
-  if (statusIconCell) {
-    const img = statusIconCell.querySelector('img, picture');
-    if (img) data.statusIcon = img.cloneNode(true);
+  // Root clears original authoring
+  block.textContent = '';
+
+  // Background image
+  if (data.background) {
+    const bg = document.createElement('div');
+    bg.className = 'banner-v3-bg-wrapper';
+    // If it's a picture keep sources; else wrap img
+    if (data.background.matches('picture')) {
+      data.background.classList.add('banner-v3-bg');
+      bg.appendChild(data.background);
+    } else {
+      const img = data.background;
+      img.classList.add('banner-v3-bg');
+      bg.appendChild(img);
+    }
+    block.appendChild(bg);
+    block.classList.add('has-bg');
   }
 
-  const fgImgCell = getCell(rows[6]);
-  if (fgImgCell) {
-    const img = fgImgCell.querySelector('img, picture');
-    if (img) data.foregroundImage = img.cloneNode(true);
+  if (data.overlay) {
+    const overlay = document.createElement('div');
+    overlay.className = 'banner-v3-overlay';
+    block.appendChild(overlay);
+  } else {
+    block.classList.add('no-overlay');
   }
 
-  // Build structure
-  const wrapper = document.createElement('div');
-  wrapper.className = 'banner-inner';
+  const inner = document.createElement('div');
+  inner.className = 'hero-inner';
 
   const content = document.createElement('div');
-  content.className = 'content';
-
-  // Top line (logo placeholder + status + links) - simplified
-  const topLine = document.createElement('div');
-  topLine.className = 'top-line';
-
-  const logoRow = document.createElement('div');
-  logoRow.className = 'logo-row';
-  // If you want to support a logo cell in future, append it here.
-
-  const statusAndLinks = document.createElement('div');
-  statusAndLinks.className = 'status-and-links';
-
-  if (data.statusText) {
-    const badge = document.createElement('div');
-    badge.className = 'status-badge';
-
-    if (data.statusIcon) {
-      const iconWrap = document.createElement('div');
-      iconWrap.className = 'icon';
-      iconWrap.appendChild(data.statusIcon);
-      badge.appendChild(iconWrap);
-    }
-
-    const badgeText = document.createElement('span');
-    badgeText.textContent = data.statusText;
-    badge.appendChild(badgeText);
-    statusAndLinks.appendChild(badge);
-  }
-
-  if (data.linkText && data.linkUrl) {
-    const links = document.createElement('div');
-    links.className = 'links';
-    const link = document.createElement('a');
-    link.className = 'inline-link';
-    link.href = data.linkUrl;
-    link.textContent = data.linkText;
-    links.appendChild(link);
-    statusAndLinks.appendChild(links);
-  }
-
-  topLine.appendChild(logoRow);
-  topLine.appendChild(statusAndLinks);
-  content.appendChild(topLine);
+  content.className = 'hero-content';
 
   // Heading
   if (data.heading) {
-    const h1 = document.createElement('h1');
-    h1.className = 'hero-heading';
-    h1.textContent = data.heading;
-    content.appendChild(h1);
+    const h = document.createElement('h1');
+    h.className = 'hero-heading';
+    h.textContent = data.heading;
+    content.appendChild(h);
   }
 
-  // Description
-  if (data.description) {
-    const desc = document.createElement('div');
-    desc.className = 'description';
-    desc.innerHTML = data.description;
-    content.appendChild(desc);
+  // Subheading
+  if (data.subheading) {
+    const sub = document.createElement('div');
+    sub.className = 'hero-subheading';
+    sub.innerHTML = data.subheading;
+    content.appendChild(sub);
   }
 
-  wrapper.appendChild(content);
+  // Buttons
+  const buttons = document.createElement('div');
+  buttons.className = 'hero-buttons';
+  let hasButtons = false;
+  if (data.primaryText && data.primaryUrl) {
+    const a = document.createElement('a');
+    a.className = 'btn btn-primary';
+    a.href = data.primaryUrl;
+    a.textContent = data.primaryText;
+    a.setAttribute('role', 'button');
+    buttons.appendChild(a);
+    hasButtons = true;
+  }
+  if (data.secondaryText && data.secondaryUrl) {
+    const a = document.createElement('a');
+    a.className = 'btn btn-secondary';
+    a.href = data.secondaryUrl;
+    a.textContent = data.secondaryText;
+    a.setAttribute('role', 'button');
+    buttons.appendChild(a);
+    hasButtons = true;
+  }
+  if (hasButtons) content.appendChild(buttons);
 
-  // Meta panel
-  const metaPanel = document.createElement('div');
-  metaPanel.className = 'meta-panel';
-  const metaItems = [
-    { label: 'Designer', value: data.metaDesigner },
-    { label: 'Last updated', value: data.metaUpdated },
-    { label: 'Version', value: data.metaVersion },
-  ];
-  metaItems.forEach(({ label, value }) => {
-    const group = document.createElement('div');
-    group.className = 'meta-group';
-
-    const lab = document.createElement('span');
-    lab.className = 'meta-label';
-    lab.textContent = label;
-
-    const val = document.createElement('span');
-    val.className = 'meta-value';
-    val.textContent = value || '-';
-
-    group.append(lab, val);
-    metaPanel.appendChild(group);
-  });
-
-  wrapper.appendChild(metaPanel);
-
-  // Foreground image (placed after meta for flex ordering adjustments)
-  if (data.foregroundImage) {
-    data.foregroundImage.classList.add('foreground-image');
-    wrapper.appendChild(data.foregroundImage);
+  // Terms
+  if (data.terms) {
+    const terms = document.createElement('div');
+    terms.className = 'hero-terms';
+    terms.innerHTML = data.terms;
+    content.appendChild(terms);
   }
 
-  // Replace original table
-  block.textContent = '';
-  block.appendChild(wrapper);
+  inner.appendChild(content);
 
-  // Move instrumentation for UE
-  moveInstrumentation(block, wrapper);
+  // Foreground visual (placed after content so flex can push it to side)
+  if (data.foreground) {
+    const fgWrap = document.createElement('div');
+    fgWrap.className = 'hero-foreground';
+    fgWrap.appendChild(data.foreground);
+    inner.appendChild(fgWrap);
+  } else {
+    block.classList.add('no-foreground');
+  }
+
+  block.appendChild(inner);
+
+  // Instrumentation for Universal Editor move
+  moveInstrumentation(block, inner);
 }
