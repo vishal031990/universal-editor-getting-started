@@ -1,0 +1,132 @@
+{
+  "definitions": [
+    {
+      "title": "Banner V2",
+      "id": "banner-v2",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Banner V2",
+              "model": "banner-v2"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "banner-v2",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Banner Title",
+          "valueType": "string",
+          "description": "Main headline text (30 characters recommended based on Figma design)"
+        },
+        {
+          "component": "text",
+          "name": "description", 
+          "label": "Banner Description",
+          "valueType": "string",
+          "description": "Subtitle text (140 characters maximum based on Figma design)"
+        },
+        {
+          "component": "reference",
+          "name": "foregroundImage",
+          "label": "Foreground Image",
+          "valueType": "string",
+          "multi": false,
+          "description": "Optional decorative image. If not present, layout maintains 6-6 column split."
+        },
+        {
+          "component": "reference",
+          "name": "backgroundImage",
+          "label": "Background Image", 
+          "valueType": "string",
+          "multi": false,
+          "description": "Optional background image with gradient overlay"
+        },
+        {
+          "component": "text",
+          "name": "footnote",
+          "label": "Footnote Text",
+          "valueType": "string",
+          "description": "Small text displayed below description"
+        },
+        {
+          "component": "text",
+          "name": "primaryCta",
+          "label": "Primary CTA Text",
+          "valueType": "string",
+          "description": "Text for the primary call-to-action button"
+        },
+        {
+          "component": "text",
+          "name": "primaryCtaHref",
+          "label": "Primary CTA Link",
+          "valueType": "string",
+          "description": "URL for the primary call-to-action button"
+        },
+        {
+          "component": "text",
+          "name": "secondaryCta",
+          "label": "Secondary CTA Text",
+          "valueType": "string",
+          "description": "Text for the secondary call-to-action button (optional)"
+        },
+        {
+          "component": "text",
+          "name": "secondaryCtaHref",
+          "label": "Secondary CTA Link",
+          "valueType": "string",
+          "description": "URL for the secondary call-to-action button (optional)"
+        },
+        {
+          "component": "select",
+          "name": "animationType",
+          "label": "Animation Type",
+          "valueType": "string",
+          "multi": false,
+          "options": [
+            {
+              "name": "Fade Up (Default)",
+              "value": "fade-up"
+            },
+            {
+              "name": "Slide Left",
+              "value": "slide-left"
+            },
+            {
+              "name": "Scale",
+              "value": "scale"
+            }
+          ],
+          "description": "Animation style on page load (600ms ease as per Figma specification)"
+        },
+        {
+          "component": "select",
+          "name": "colorTheme",
+          "label": "Color Theme",
+          "valueType": "string", 
+          "multi": false,
+          "options": [
+            {
+              "name": "Purple Gradient (Default)",
+              "value": "purple"
+            },
+            {
+              "name": "Light Theme",
+              "value": "light"
+            }
+          ],
+          "description": "Color scheme based on Figma design system"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

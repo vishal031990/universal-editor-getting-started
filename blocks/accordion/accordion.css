@@ -66,35 +66,39 @@
   display: none;
 }
 
-/* Custom plus/minus icon */
+/* Custom plus/minus icon - Circular with subtle animations */
 .accordion details summary::after {
   content: '';
   position: relative;
-  width: 32px;
-  height: 32px;
-  border: 2px solid #772bcb;
-  border-radius: 16px;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #772bcb;
+  border-radius: 50%; /* Perfect circle */
   background-color: #ffffff;
   flex-shrink: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M2 8h12M8 2v12" stroke="%23772bcb" stroke-width="2" stroke-linecap="round"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path d="M2 7h10M7 2v10" stroke="%23772bcb" stroke-width="1.5" stroke-linecap="round"/></svg>');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 16px 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-size: 14px 14px;
+  transition: all 0.25s ease;
+  align-self: center;
+  margin-top: 1px;
 }
 
 .accordion details summary:hover::after {
-  transform: scale(1.05);
   border-color: #5a1f9a;
+  background-color: #f8f4ff;
 }
 
 .accordion details[open] summary::after {
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M2 8h12" stroke="%23772bcb" stroke-width="2" stroke-linecap="round"/></svg>');
-  transform: rotate(180deg);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path d="M2 7h10" stroke="%23772bcb" stroke-width="1.5" stroke-linecap="round"/></svg>');
+  transform: none;
 }
 
 .accordion details[open] summary:hover::after {
-  transform: rotate(180deg) scale(1.05);
+  transform: none;
+  border-color: #5a1f9a;
+  background-color: #f8f4ff;
 }
 
 .accordion details .accordion-item-body {
@@ -104,9 +108,9 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.25s ease, 
+              opacity 0.2s ease,
+              padding 0.25s ease;
 }
 
 .accordion details[open] .accordion-item-body {
@@ -116,30 +120,19 @@
   padding-right: 56px;
   border-top: none;
   background-color: #ffffff;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.3s ease, 
+              opacity 0.25s ease,
+              padding 0.3s ease;
 }
 
-/* Content animation */
+/* Content animation - Subtle fade in */
 .accordion details .accordion-item-body > * {
-  transform: translateY(-10px);
   opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
-              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+  transition: opacity 0.2s ease 0.1s;
 }
 
 .accordion details[open] .accordion-item-body > * {
-  transform: translateY(0);
   opacity: 1;
-}
-
-.accordion details[open] .accordion-item-body > *:nth-child(2) {
-  transition-delay: 0.15s;
-}
-
-.accordion details[open] .accordion-item-body > *:nth-child(3) {
-  transition-delay: 0.2s;
 }
 
 /* Link styling within accordion content */
