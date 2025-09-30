@@ -123,7 +123,7 @@ export default function decorate(block) {
     // Add gradient overlay
     const gradientOverlay = document.createElement("div");
     gradientOverlay.className = "gradient-overlay";
-    bgDiv.append(gradientOverlay);
+    // bgDiv.append(gradientOverlay);
 
     block.append(bgDiv);
   } else {
