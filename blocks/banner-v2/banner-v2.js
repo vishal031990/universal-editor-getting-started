@@ -208,6 +208,8 @@ export default function decorate(block) {
 
   block.append(heroContent);
 
+  // Animation code commented out
+  /*
   // Add intersection observer for animations
   const observerOptions = {
     threshold: 0.1,
@@ -234,4 +236,5 @@ export default function decorate(block) {
   if (prefersReducedMotion.matches) {
     block.classList.add('reduced-motion');
   }
+  */
 }

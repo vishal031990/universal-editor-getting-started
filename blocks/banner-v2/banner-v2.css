@@ -104,13 +104,13 @@
   line-height: 58px;
   letter-spacing: -0.5px;
   color: var(--hero-text-white);
-  opacity: 0;
-  /* transform: translateY(30px); */
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
-.banner-v2 .hero-title.animate-in {
+/* .banner-v2 .hero-title.animate-in {
   animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.3s both;
-}
+} */
 
 .banner-v2 .hero-subtitle {
   margin: 0 0 24px;
@@ -120,13 +120,13 @@
   line-height: 32px;
   letter-spacing: -0.5px;
   color: var(--hero-text-white);
-  opacity: 0;
-  /* transform: translateY(30px); */
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
-.banner-v2 .hero-subtitle.animate-in {
-  /* animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.6s both; */
-}
+/* .banner-v2 .hero-subtitle.animate-in {
+  animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.6s both;
+} */
 
 .banner-v2 .hero-terms {
   margin: 0 0 24px;
@@ -135,13 +135,13 @@
   font-size: 14px;
   line-height: 20px;
   color: var(--hero-text-white);
-  opacity: 0;
-  /* transform: translateY(30px); */
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
-.banner-v2 .hero-terms.animate-in {
-  /* animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.9s both; */
-}
+/* .banner-v2 .hero-terms.animate-in {
+  animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.9s both;
+} */
 
 .banner-v2 .hero-terms a {
   color: var(--hero-text-white);
@@ -159,13 +159,13 @@
 .banner-v2 .hero-buttons {
   display: flex;
   gap: 24px;
-  opacity: 0;
-  /* transform: translateY(30px); */
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
-.banner-v2 .hero-buttons.animate-in {
-  /* animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 1.2s both; */
-}
+/* .banner-v2 .hero-buttons.animate-in {
+  animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 1.2s both;
+} */
 
 .banner-v2 .btn {
   display: inline-flex;
@@ -195,8 +195,8 @@
 
 .banner-v2 .btn-primary:hover {
   background-color: var(--hero-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(119, 43, 203, 0.3);
+  /* transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(119, 43, 203, 0.3); */
 }
 
 .banner-v2 .btn-secondary {
@@ -208,8 +208,8 @@
 
 .banner-v2 .btn-secondary:hover {
   background-color: #f8f4ff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(119, 43, 203, 0.2);
+  /* transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(119, 43, 203, 0.2); */
 }
 
 /* Foreground Image */
@@ -218,13 +218,13 @@
   height: 357px;
   overflow: hidden;
   border-radius: 20px;
-  opacity: 0;
-  /* transform: translateY(30px); */
+  /* opacity: 0;
+  transform: translateY(30px); */
 }
 
-.banner-v2 .foreground-image.animate-in {
+/* .banner-v2 .foreground-image.animate-in {
   animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 1.5s both;
-}
+} */
 
 .banner-v2 .foreground-image picture,
 .banner-v2 .foreground-image img {
@@ -236,16 +236,16 @@
 }
 
 /* Fade In Up Animation */
-@keyframes fadeInUp {
+/* @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
+} */
 }
 
 /* Tablet Responsive (1024px) */
@@ -342,8 +342,8 @@
 
   .banner-v2 .btn-primary:hover {
     background-color: var(--hero-primary-hover);
-    transform: none;
-    box-shadow: none;
+    /* transform: none;
+    box-shadow: none; */
   }
 
   /* Keep secondary button style consistent */
@@ -355,8 +355,8 @@
 
   .banner-v2 .btn-secondary:hover {
     background-color: #f8f4ff;
-    transform: none;
-    box-shadow: none;
+    /* transform: none;
+    box-shadow: none; */
   }
 
   .banner-v2 .foreground-image {
@@ -396,7 +396,7 @@
 }
 
 /* Accessibility - Reduced Motion */
-.banner-v2.reduced-motion .hero-title,
+/* .banner-v2.reduced-motion .hero-title,
 .banner-v2.reduced-motion .hero-subtitle,
 .banner-v2.reduced-motion .hero-terms,
 .banner-v2.reduced-motion .hero-buttons,
@@ -408,7 +408,7 @@
 
 .banner-v2.reduced-motion .btn:hover {
   transform: none;
-}
+} */
 
 /* Focus styles for accessibility */
 .banner-v2 .btn:focus,
