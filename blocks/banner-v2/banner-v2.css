@@ -54,7 +54,7 @@
 }
 
 /* Gradient Overlay */
-.banner-v2 .gradient-overlay {
+/* .banner-v2 .gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,7 +66,7 @@
       var(--hero-gradient-end) 100%);
   pointer-events: none;
 }
-
+ */
 
 /* Main Content Container */
 .banner-v2 .hero-content {
