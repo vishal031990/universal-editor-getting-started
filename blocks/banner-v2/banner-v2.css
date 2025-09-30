@@ -105,7 +105,7 @@
   letter-spacing: -0.5px;
   color: var(--hero-text-white);
   opacity: 0;
-  transform: translateY(30px);
+  /* transform: translateY(30px); */
 }
 
 .banner-v2 .hero-title.animate-in {
@@ -121,11 +121,11 @@
   letter-spacing: -0.5px;
   color: var(--hero-text-white);
   opacity: 0;
-  transform: translateY(30px);
+  /* transform: translateY(30px); */
 }
 
 .banner-v2 .hero-subtitle.animate-in {
-  animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.6s both;
+  /* animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.6s both; */
 }
 
 .banner-v2 .hero-terms {
@@ -136,11 +136,11 @@
   line-height: 20px;
   color: var(--hero-text-white);
   opacity: 0;
-  transform: translateY(30px);
+  /* transform: translateY(30px); */
 }
 
 .banner-v2 .hero-terms.animate-in {
-  animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.9s both;
+  /* animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 0.9s both; */
 }
 
 .banner-v2 .hero-terms a {
@@ -148,7 +148,7 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-underline-position: from-font;
-  transition: opacity 0.2s ease;
+  /* transition: opacity 0.2s ease; */
 }
 
 .banner-v2 .hero-terms a:hover {
@@ -160,11 +160,11 @@
   display: flex;
   gap: 24px;
   opacity: 0;
-  transform: translateY(30px);
+  /* transform: translateY(30px); */
 }
 
 .banner-v2 .hero-buttons.animate-in {
-  animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 1.2s both;
+  /* animation: fadeInUp var(--hero-animation-duration) var(--hero-animation-ease) 1.2s both; */
 }
 
 .banner-v2 .btn {
@@ -219,7 +219,7 @@
   overflow: hidden;
   border-radius: 20px;
   opacity: 0;
-  transform: translateY(30px);
+  /* transform: translateY(30px); */
 }
 
 .banner-v2 .foreground-image.animate-in {
