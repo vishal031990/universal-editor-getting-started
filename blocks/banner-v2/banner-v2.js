@@ -15,9 +15,6 @@ import { createOptimizedPicture } from "../../scripts/aem.js";
  * Row 6: Secondary CTA Link  
  * Row 7: Background Image
  * Row 8: Foreground/Main Image
- * Row 9: Decorative Element 1 (optional)
- * Row 10: Decorative Element 2 (optional)
- * Row 11: Decorative Element 3 (optional)
  */
 
 export default function decorate(block) {
@@ -30,8 +27,7 @@ export default function decorate(block) {
     terms: '',
     ctas: [],
     bgImage: null,
-    fgImage: null,
-    decorativeImages: []
+    fgImage: null
   };
 
   // Parse content rows
@@ -94,14 +90,6 @@ export default function decorate(block) {
           data.fgImage = picture.cloneNode(true);
         }
         break;
-        
-      case 9: // Decorative Element 1
-      case 10: // Decorative Element 2
-      case 11: // Decorative Element 3
-        if (picture) {
-          data.decorativeImages.push(picture.cloneNode(true));
-        }
-        break;
     }
   });
 
@@ -140,64 +128,7 @@ export default function decorate(block) {
     block.classList.add('default-gradient');
   }
 
-  // Floating Decorative Elements
-  if (data.decorativeImages.length > 0) {
-    const floatingElements = document.createElement('div');
-    floatingElements.className = 'floating-elements';
-    
-    data.decorativeImages.forEach((img, i) => {
-      const element = document.createElement('div');
-      element.className = `floating-element element-${i + 1}`;
-      
-      const picture = img.querySelector('img');
-      if (picture) {
-        const optimizedPic = createOptimizedPicture(
-          picture.src,
-          picture.alt || 'Decorative element',
-          false,
-          [{ width: '100' }]
-        );
-        element.append(optimizedPic);
-      } else {
-        element.append(img);
-      }
-      
-      floatingElements.append(element);
-    });
-    
-    // Add default decorative spheres if fewer than 3 images
-    const sphereColors = ['pink', 'blue', 'purple'];
-    for (let i = data.decorativeImages.length; i < 4; i++) {
-      const element = document.createElement('div');
-      element.className = `floating-element element-${i + 1}`;
-      
-      const sphere = document.createElement('div');
-      sphere.className = `sphere sphere-${sphereColors[i % sphereColors.length]}`;
-      element.append(sphere);
-      
-      floatingElements.append(element);
-    }
-    
-    block.append(floatingElements);
-  } else {
-    // Add default floating spheres
-    const floatingElements = document.createElement('div');
-    floatingElements.className = 'floating-elements';
-    
-    const sphereColors = ['pink', 'blue', 'purple', 'pink'];
-    for (let i = 0; i < 4; i++) {
-      const element = document.createElement('div');
-      element.className = `floating-element element-${i + 1}`;
-      
-      const sphere = document.createElement('div');
-      sphere.className = `sphere sphere-${sphereColors[i]}`;
-      element.append(sphere);
-      
-      floatingElements.append(element);
-    }
-    
-    block.append(floatingElements);
-  }
+  // Removed floating decorative elements
 
   // Main Content Container
   const heroContent = document.createElement('div');
