@@ -189,6 +189,8 @@
 .banner-v2 .btn-primary {
   background-color: var(--hero-primary-color);
   color: var(--hero-text-white);
+  border: 2px solid transparent;
+  box-sizing: border-box;
 }
 
 .banner-v2 .btn-primary:hover {
@@ -267,6 +269,22 @@
     height: 300px;
   }
   
+  /* Adjust button styles for tablet */
+  .banner-v2 .btn {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+  
+  .banner-v2 .btn-primary {
+    background-color: transparent;
+    color: var(--hero-primary-color);
+    border: 2px solid var(--hero-primary-color);
+  }
+  
+  .banner-v2 .btn-primary:hover {
+    background-color: var(--hero-primary-color);
+    color: var(--hero-text-white);
+  }
 }
 
 /* Mobile Responsive (768px) */
@@ -309,6 +327,34 @@
   .banner-v2 .btn {
     width: 100%;
     padding: 14px 24px;
+    font-size: 15px;
+  }
+  
+  /* Primary button with outline style on mobile */
+  .banner-v2 .btn-primary {
+    background-color: transparent;
+    color: var(--hero-primary-color);
+    border: 2px solid var(--hero-primary-color);
+  }
+  
+  .banner-v2 .btn-primary:hover {
+    background-color: var(--hero-primary-color);
+    color: var(--hero-text-white);
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Keep secondary button style consistent */
+  .banner-v2 .btn-secondary {
+    background-color: var(--hero-text-white);
+    color: var(--hero-primary-color);
+    border: 2px solid var(--hero-primary-color);
+  }
+  
+  .banner-v2 .btn-secondary:hover {
+    background-color: #f8f4ff;
+    transform: none;
+    box-shadow: none;
   }
   
   .banner-v2 .foreground-image {
