@@ -1,7 +1,9 @@
 [
   {
     "id": "main",
-    "components": ["section"]
+    "components": [
+      "section"
+    ]
   },
   {
     "id": "section",
@@ -16,29 +18,40 @@
       "fragment",
       "accordion",
       "pokemon",
-      "banner",
-      "info-banner",
-      "banner-v2"
+      "banner"
     ]
   },
   {
     "id": "accordion",
-    "components": ["accordion-item"]
+    "components": [
+      "accordion-item"
+    ]
   },
   {
     "id": "cards",
-    "components": ["card"]
+    "components": [
+      "card"
+    ]
   },
   {
     "id": "columns",
-    "components": ["column"]
+    "components": [
+      "column"
+    ]
   },
   {
     "id": "column",
-    "components": ["text", "image", "button", "title"]
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
   },
   {
     "id": "info-banner",
-    "components": ["info-banner"]
+    "components": [
+      "info-banner"
+    ]
   }
 ]

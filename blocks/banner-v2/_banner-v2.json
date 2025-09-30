@@ -23,107 +23,87 @@
         {
           "component": "text",
           "name": "title",
-          "label": "Banner Title",
+          "label": "Hero Title",
           "valueType": "string",
-          "description": "Main headline text (30 characters recommended based on Figma design)"
+          "description": "Main headline (30 characters recommended)"
+        },
+        {
+          "component": "richtext",
+          "name": "subtitle",
+          "label": "Hero Subtitle",
+          "valueType": "string",
+          "description": "Description text (140 characters maximum)"
+        },
+        {
+          "component": "richtext",
+          "name": "terms",
+          "label": "Terms/Footnote",
+          "valueType": "string",
+          "description": "Additional text with optional link"
         },
         {
           "component": "text",
-          "name": "description", 
-          "label": "Banner Description",
-          "valueType": "string",
-          "description": "Subtitle text (140 characters maximum based on Figma design)"
+          "name": "primaryCtaText",
+          "label": "Primary Button Text",
+          "valueType": "string"
         },
         {
-          "component": "reference",
-          "name": "foregroundImage",
-          "label": "Foreground Image",
-          "valueType": "string",
-          "multi": false,
-          "description": "Optional decorative image. If not present, layout maintains 6-6 column split."
+          "component": "text",
+          "name": "primaryCtaLink",
+          "label": "Primary Button Link",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "secondaryCtaText",
+          "label": "Secondary Button Text",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "secondaryCtaLink",
+          "label": "Secondary Button Link",
+          "valueType": "string"
         },
         {
           "component": "reference",
           "name": "backgroundImage",
-          "label": "Background Image", 
+          "label": "Background Image",
           "valueType": "string",
           "multi": false,
-          "description": "Optional background image with gradient overlay"
+          "description": "Full-width background image"
         },
         {
-          "component": "text",
-          "name": "footnote",
-          "label": "Footnote Text",
-          "valueType": "string",
-          "description": "Small text displayed below description"
-        },
-        {
-          "component": "text",
-          "name": "primaryCta",
-          "label": "Primary CTA Text",
-          "valueType": "string",
-          "description": "Text for the primary call-to-action button"
-        },
-        {
-          "component": "text",
-          "name": "primaryCtaHref",
-          "label": "Primary CTA Link",
-          "valueType": "string",
-          "description": "URL for the primary call-to-action button"
-        },
-        {
-          "component": "text",
-          "name": "secondaryCta",
-          "label": "Secondary CTA Text",
-          "valueType": "string",
-          "description": "Text for the secondary call-to-action button (optional)"
-        },
-        {
-          "component": "text",
-          "name": "secondaryCtaHref",
-          "label": "Secondary CTA Link",
-          "valueType": "string",
-          "description": "URL for the secondary call-to-action button (optional)"
-        },
-        {
-          "component": "select",
-          "name": "animationType",
-          "label": "Animation Type",
+          "component": "reference",
+          "name": "foregroundImage",
+          "label": "Main Hero Image",
           "valueType": "string",
           "multi": false,
-          "options": [
-            {
-              "name": "Fade Up (Default)",
-              "value": "fade-up"
-            },
-            {
-              "name": "Slide Left",
-              "value": "slide-left"
-            },
-            {
-              "name": "Scale",
-              "value": "scale"
-            }
-          ],
-          "description": "Animation style on page load (600ms ease as per Figma specification)"
+          "description": "Primary image (357x357px recommended)"
         },
         {
-          "component": "select",
-          "name": "colorTheme",
-          "label": "Color Theme",
-          "valueType": "string", 
+          "component": "reference",
+          "name": "decorativeElement1",
+          "label": "Decorative Element 1",
+          "valueType": "string",
           "multi": false,
-          "options": [
-            {
-              "name": "Purple Gradient (Default)",
-              "value": "purple"
-            },
-            {
-              "name": "Light Theme",
-              "value": "light"
-            }
-          ],
-          "description": "Color scheme based on Figma design system"
+          "description": "Optional floating decorative image"
+        },
+        {
+          "component": "reference",
+          "name": "decorativeElement2",
+          "label": "Decorative Element 2",
+          "valueType": "string",
+          "multi": false,
+          "description": "Optional floating decorative image"
+        },
+        {
+          "component": "reference",
+          "name": "decorativeElement3",
+          "label": "Decorative Element 3",
+          "valueType": "string",
+          "multi": false,
+          "description": "Optional floating decorative image"
         }
       ]
     }
