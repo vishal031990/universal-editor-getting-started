@@ -18,8 +18,8 @@
 .banner-v2 {
   position: relative;
   width: 100%;
+  height: 100vh;
   min-height: 100vh;
-  min-height: 600px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -176,7 +176,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  padding: 12px 32px;
+  padding: 12px 24px;
   border-radius: var(--hero-border-radius);
   border: none;
   cursor: pointer;
@@ -184,12 +184,13 @@
   text-align: center;
   white-space: nowrap;
   text-decoration: none;
+  min-height: 48px;
 }
 
 .banner-v2 .btn-primary {
   background-color: var(--hero-primary-color);
   color: var(--hero-text-white);
-  border: 2px solid transparent;
+  border: none;
   box-sizing: border-box;
 }
 
@@ -271,26 +272,27 @@
   
   /* Adjust button styles for tablet */
   .banner-v2 .btn {
-    padding: 14px 28px;
-    font-size: 15px;
+    padding: 12px 24px;
+    font-size: 16px;
+    min-height: 48px;
   }
   
   .banner-v2 .btn-primary {
     background-color: var(--hero-primary-color);
     color: var(--hero-text-white);
-    border: 2px solid var(--hero-primary-color);
+    border: none;
   }
   
   .banner-v2 .btn-primary:hover {
     background-color: var(--hero-primary-hover);
-    border-color: var(--hero-primary-hover);
   }
 }
 
 /* Mobile Responsive (768px) */
 @media (max-width: 768px) {
   .banner-v2 {
-    min-height: auto;
+    height: 100vh;
+    min-height: 100vh;
   }
   
   .banner-v2 .hero-content {
@@ -326,20 +328,20 @@
   
   .banner-v2 .btn {
     width: 100%;
-    padding: 14px 24px;
-    font-size: 15px;
+    padding: 12px 24px;
+    font-size: 16px;
+    min-height: 48px;
   }
   
   /* Primary button solid style on mobile */
   .banner-v2 .btn-primary {
     background-color: var(--hero-primary-color);
     color: var(--hero-text-white);
-    border: 2px solid var(--hero-primary-color);
+    border: none;
   }
   
   .banner-v2 .btn-primary:hover {
     background-color: var(--hero-primary-hover);
-    border-color: var(--hero-primary-hover);
     transform: none;
     box-shadow: none;
   }
@@ -368,7 +370,8 @@
 /* Small Mobile (480px) */
 @media (max-width: 480px) {
   .banner-v2 {
-    min-height: 500px;
+    height: 100vh;
+    min-height: 100vh;
   }
   
   .banner-v2 .hero-content {
