@@ -28,6 +28,12 @@
     ]
   },
   {
+    "id": "banner-v3",
+    "components": [
+      "banner-v3"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"

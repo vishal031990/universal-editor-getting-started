@@ -1,0 +1,139 @@
+/* Banner V3 Hero (refactored to match Figma hero: background image + gradient + content + CTAs + optional foreground) */
+
+.banner-v3 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 80px; /* desktop */
+  min-height: 480px;
+  display: flex;
+  isolation: isolate; /* ensure overlay stacking isolation */
+}
+
+.banner-v3.has-bg {
+  background: #000; /* fallback while image loads */
+}
+
+.banner-v3 .banner-v3-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -2;
+}
+
+.banner-v3 .banner-v3-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.7) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.banner-v3 .hero-inner {
+  display: flex;
+  gap: 40px;
+  padding: 128px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner-v3.no-foreground .hero-inner { justify-content: flex-start; }
+
+.banner-v3 .hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 760px;
+  color: #fff;
+}
+
+.banner-v3 .hero-heading {
+  font: 700 50px/58px "Avenir Next LT Pro","Avenir Next",sans-serif;
+  letter-spacing: -0.5px;
+  margin: 0;
+  color: #fff;
+}
+
+.banner-v3 .hero-subheading {
+  font: 600 24px/32px "Avenir Next",sans-serif;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.banner-v3 .hero-terms {
+  font: 500 14px/20px "Avenir Next",sans-serif;
+  max-width: 560px;
+}
+.banner-v3 .hero-terms a { color: #fff; text-decoration: underline; text-decoration-skip-ink: none; }
+.banner-v3 .hero-terms a:hover { opacity: .85; }
+
+.banner-v3 .hero-buttons {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.banner-v3 .btn {
+  font: 600 16px/24px "Avenir Next",sans-serif;
+  padding: 12px 32px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s, color .2s, opacity .2s, border-color .2s;
+}
+
+.banner-v3 .btn-primary {
+  background: #772bcb;
+  color: #fff;
+}
+.banner-v3 .btn-primary:hover { background:#6720b5; }
+
+.banner-v3 .btn-secondary {
+  background: #fff;
+  color: #772bcb;
+  border: 2px solid #772bcb;
+}
+.banner-v3 .btn-secondary:hover { background:#f7f2fd; }
+
+.banner-v3 .hero-foreground {
+  flex: 0 0 357px;
+  max-width: 357px;
+  aspect-ratio: 1/1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.banner-v3 .hero-foreground img, .banner-v3 .hero-foreground picture { width:100%; height:100%; object-fit:cover; }
+
+/* Accessibility: ensure text stays readable if no overlay */
+.banner-v3.no-overlay .hero-heading,
+.banner-v3.no-overlay .hero-subheading,
+.banner-v3.no-overlay .hero-terms { text-shadow: 0 2px 4px rgba(0,0,0,.45); }
+
+/* Tablet */
+@media (max-width: 1000px) {
+  .banner-v3 { border-radius: 60px; }
+  .banner-v3 .hero-inner { flex-direction: column; align-items: flex-start; padding: 64px 48px; }
+  .banner-v3 .hero-foreground { order: -1; width:100%; max-width: 300px; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .banner-v3 { border-radius: 40px; }
+  .banner-v3 .hero-inner { padding: 40px 24px; gap: 32px; }
+  .banner-v3 .hero-heading { font-size: 42px; line-height: 50px; }
+  .banner-v3 .hero-subheading { font-size: 20px; line-height: 28px; }
+}
+
+@media (max-width: 420px) {
+  .banner-v3 { border-radius: 32px; }
+  .banner-v3 .hero-heading { font-size: 36px; line-height: 44px; }
+}

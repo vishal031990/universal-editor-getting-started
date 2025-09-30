@@ -1,0 +1,42 @@
+{
+  "definitions": [
+    {
+      "title": "Banner V3",
+      "id": "banner-v3",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Banner V3",
+              "model": "banner-v3"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "banner-v3",
+      "fields": [
+        { "component": "text", "name": "heading", "label": "Heading", "valueType": "string", "required": true },
+        { "component": "richtext", "name": "subheading", "label": "Subheading / Description", "valueType": "string" },
+        { "component": "richtext", "name": "terms", "label": "Terms / Footnote", "valueType": "string" },
+        { "component": "text", "name": "primaryCtaText", "label": "Primary CTA Text", "valueType": "string" },
+        { "component": "text", "name": "primaryCtaUrl", "label": "Primary CTA URL", "valueType": "string" },
+        { "component": "text", "name": "secondaryCtaText", "label": "Secondary CTA Text", "valueType": "string" },
+        { "component": "text", "name": "secondaryCtaUrl", "label": "Secondary CTA URL", "valueType": "string" },
+        { "component": "reference", "name": "backgroundImage", "label": "Background Image", "valueType": "string", "multi": false },
+        { "component": "reference", "name": "foregroundImage", "label": "Foreground Image", "valueType": "string", "multi": false },
+        { "component": "boolean", "name": "overlayGradient", "label": "Enable Overlay Gradient", "valueType": "boolean", "value": true }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "banner-v3",
+      "components": ["banner-v3"]
+    }
+  ]
+}
