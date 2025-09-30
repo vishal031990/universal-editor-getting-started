@@ -33,11 +33,25 @@
 
 .banner-v3 .hero-inner {
   display: flex;
-  gap: 40px;
+  gap: 40px; /* default hero gap */
   padding: 128px;
   width: 100%;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Showcase variant (Figma marketing hero) */
+.banner-v3.banner-v3--showcase .hero-inner { gap: 10px; }
+
+.banner-v3.banner-v3--showcase .hero-foreground { padding: 0 57px; }
+.banner-v3.banner-v3--showcase.no-foreground .hero-foreground.placeholder { display:block; visibility:hidden; }
+
+.banner-v3.banner-v3--showcase .hero-heading { font-size:50px; line-height:58px; }
+
+/* Order adjustments mobile (buttons before terms for showcase) */
+@media (max-width: 640px) {
+  .banner-v3.banner-v3--showcase .hero-buttons { order: 2; }
+  .banner-v3.banner-v3--showcase .hero-terms { order: 3; }
 }
 
 .banner-v3.no-foreground .hero-inner { justify-content: flex-start; }
@@ -113,6 +127,8 @@
 }
 .banner-v3 .hero-foreground img, .banner-v3 .hero-foreground picture { width:100%; height:100%; object-fit:cover; }
 
+.banner-v3 .hero-foreground.placeholder { background: transparent; }
+
 /* Accessibility: ensure text stays readable if no overlay */
 .banner-v3.no-overlay .hero-heading,
 .banner-v3.no-overlay .hero-subheading,
@@ -123,6 +139,9 @@
   .banner-v3 { border-radius: 60px; }
   .banner-v3 .hero-inner { flex-direction: column; align-items: flex-start; padding: 64px 48px; }
   .banner-v3 .hero-foreground { order: -1; width:100%; max-width: 300px; }
+  /* Showcase variant keeps row layout until mobile */
+  .banner-v3.banner-v3--showcase .hero-inner { flex-direction: row; align-items: center; }
+  .banner-v3.banner-v3--showcase .hero-foreground { order: 0; max-width:357px; width:auto; }
 }
 
 /* Mobile */
@@ -131,6 +150,8 @@
   .banner-v3 .hero-inner { padding: 40px 24px; gap: 32px; }
   .banner-v3 .hero-heading { font-size: 42px; line-height: 50px; }
   .banner-v3 .hero-subheading { font-size: 20px; line-height: 28px; }
+  .banner-v3.banner-v3--showcase .hero-inner { flex-direction: column; }
+  .banner-v3.banner-v3--showcase .hero-foreground { padding:0; order:-1; width:100%; max-width:300px; }
 }
 
 @media (max-width: 420px) {

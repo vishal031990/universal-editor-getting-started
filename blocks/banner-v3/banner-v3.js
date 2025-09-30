@@ -1,17 +1,22 @@
 import { moveInstrumentation } from "../../scripts/scripts.js";
 
-/* Banner V3 Hero Refactor
- * New authoring table structure (rows):
- * 0: Heading (text or richtext)
- * 1: Subheading (text or richtext)
- * 2: Terms (rich text - can include links)
- * 3: Primary CTA Text
- * 4: Primary CTA URL
- * 5: Secondary CTA Text
- * 6: Secondary CTA URL
- * 7: Background Image (optional image)
- * 8: Foreground Image (optional image)
- * 9: Overlay Gradient (boolean text: "true" / "false" / blank)
+/* Banner V3 Dual Variant (Hero / Showcase)
+ * Table schema (hero mode):
+ * 0 Heading
+ * 1 Subheading
+ * 2 Terms
+ * 3 Primary CTA Text
+ * 4 Primary CTA URL
+ * 5 Secondary CTA Text
+ * 6 Secondary CTA URL
+ * 7 Background Image
+ * 8 Foreground Image
+ * 9 Overlay Gradient (true/false)
+ *
+ * Showcase detection: if no CTA texts provided and foreground exists OR a data-variant="showcase" attribute present on block, we switch to showcase variant:
+ * - Keep placeholder space for foreground even if absent (layout 6/6)
+ * - Gap becomes 10px (desktop) and specific paddings already match hero but foreground padded 57px desktop/tablet
+ * - Heading size enforced 50/58. We keep hero heading style otherwise.
  */
 
 function firstCell(row) { return row?.querySelector(':scope > div'); }
@@ -41,6 +46,15 @@ export default function decorate(block) {
     foreground: cellImage(rows[8]),
     overlay: (cellText(rows[9]) || 'true').toLowerCase() !== 'false',
   };
+
+  // Determine variant
+  const explicitVariant = block.dataset.variant?.toLowerCase();
+  let showcase = explicitVariant === 'showcase';
+  if (!showcase) {
+    const noCtas = !data.primaryText && !data.secondaryText;
+    if (noCtas && data.foreground) showcase = true;
+  }
+  if (showcase) block.classList.add('banner-v3--showcase');
 
   // Root clears original authoring
   block.textContent = '';
@@ -134,6 +148,12 @@ export default function decorate(block) {
     inner.appendChild(fgWrap);
   } else {
     block.classList.add('no-foreground');
+    if (showcase) {
+      // maintain layout space placeholder (hidden but preserves alignment when design expects two columns)
+      const placeholder = document.createElement('div');
+      placeholder.className = 'hero-foreground placeholder';
+      inner.appendChild(placeholder);
+    }
   }
 
   block.appendChild(inner);
