@@ -276,14 +276,14 @@
   }
   
   .banner-v2 .btn-primary {
-    background-color: transparent;
-    color: var(--hero-primary-color);
+    background-color: var(--hero-primary-color);
+    color: var(--hero-text-white);
     border: 2px solid var(--hero-primary-color);
   }
   
   .banner-v2 .btn-primary:hover {
-    background-color: var(--hero-primary-color);
-    color: var(--hero-text-white);
+    background-color: var(--hero-primary-hover);
+    border-color: var(--hero-primary-hover);
   }
 }
 
@@ -330,16 +330,16 @@
     font-size: 15px;
   }
   
-  /* Primary button with outline style on mobile */
+  /* Primary button solid style on mobile */
   .banner-v2 .btn-primary {
-    background-color: transparent;
-    color: var(--hero-primary-color);
+    background-color: var(--hero-primary-color);
+    color: var(--hero-text-white);
     border: 2px solid var(--hero-primary-color);
   }
   
   .banner-v2 .btn-primary:hover {
-    background-color: var(--hero-primary-color);
-    color: var(--hero-text-white);
+    background-color: var(--hero-primary-hover);
+    border-color: var(--hero-primary-hover);
     transform: none;
     box-shadow: none;
   }
