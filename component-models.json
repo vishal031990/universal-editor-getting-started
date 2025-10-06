@@ -407,6 +407,51 @@
     ]
   },
   {
+    "id": "countdown",
+    "fields": [
+      {
+        "component": "text",
+        "name": "preMessage",
+        "label": "Pre Message",
+        "description": "Message shown before the countdown timer (e.g., 'Christmas sale ends in:')",
+        "valueType": "string",
+        "value": "Countdown ends in:"
+      },
+      {
+        "component": "text",
+        "name": "targetDate",
+        "label": "Target Date & Time",
+        "description": "Target date and time in format: YYYY-MM-DD HH:MM:SS (e.g., 2024-12-25 23:59:59)",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "name": "postMessage",
+        "label": "Post Message",
+        "description": "Message shown after countdown expires (e.g., 'Sale has ended!')",
+        "valueType": "string",
+        "value": "Time has expired!"
+      },
+      {
+        "component": "text",
+        "name": "fontColor",
+        "label": "Font Color",
+        "description": "Text color in hex format (e.g., #ffffff)",
+        "valueType": "string",
+        "value": "#ffffff"
+      },
+      {
+        "component": "text",
+        "name": "backgroundColor",
+        "label": "Background Color",
+        "description": "Background color in hex format (e.g., #772bcb)",
+        "valueType": "string",
+        "value": "#772bcb"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
