@@ -59,15 +59,16 @@ function updateCountdown(block, targetDate, postMessage) {
   const secondsEl = block.querySelector('.countdown-seconds');
   const preMessageEl = block.querySelector('.countdown-pre-message');
   const postMessageEl = block.querySelector('.countdown-post-message');
+  const timerEl = block.querySelector('.countdown-timer');
 
   if (timeLeft.expired) {
     // Show post message and hide countdown
     if (preMessageEl) preMessageEl.style.display = 'none';
+    if (timerEl) timerEl.style.display = 'none';
     if (postMessageEl) {
       postMessageEl.style.display = 'block';
       postMessageEl.textContent = postMessage || 'Time has expired!';
     }
-    block.querySelector('.countdown-timer').style.display = 'none';
     return false; // Stop the timer
   }
 
@@ -83,27 +84,70 @@ function updateCountdown(block, targetDate, postMessage) {
 export default function decorate(block) {
   block.classList.add('countdown');
 
-  const rows = [...block.children];
-
-  const data = {
-    preMessage: cellText(rows[0]) || 'Countdown ends in:',
-    targetDate: cellText(rows[1]) || '',
-    postMessage: cellText(rows[2]) || 'Time has expired!',
-    fontColor: cellText(rows[3]) || '#ffffff',
-    backgroundColor: cellText(rows[4]) || '#772bcb',
-  };
+  let data = {};
+  
+  // Check if this is Universal Editor format (has data-aue attributes)
+  const ueElements = block.querySelectorAll('[data-aue-prop]');
+  
+  if (ueElements.length > 0) {
+    // Universal Editor format - extract data from data-aue-prop elements
+    const preMessageEl = block.querySelector('[data-aue-prop="preMessage"]');
+    const targetDateEl = block.querySelector('[data-aue-prop="targetDate"]');
+    const postMessageEl = block.querySelector('[data-aue-prop="postMessage"]');
+    const fontColorEl = block.querySelector('[data-aue-prop="fontColor"]');
+    const backgroundColorEl = block.querySelector('[data-aue-prop="backgroundColor"]');
+    
+    data = {
+      preMessage: preMessageEl?.textContent?.trim() || preMessageEl?.innerText?.trim() || 'Countdown ends in:',
+      targetDate: targetDateEl?.textContent?.trim() || targetDateEl?.innerText?.trim() || '',
+      postMessage: postMessageEl?.textContent?.trim() || postMessageEl?.innerText?.trim() || 'Time has expired!',
+      fontColor: fontColorEl?.textContent?.trim() || fontColorEl?.innerText?.trim() || '#ffffff',
+      backgroundColor: backgroundColorEl?.textContent?.trim() || backgroundColorEl?.innerText?.trim() || '#772bcb',
+    };
+    
+    // Debug logging for troubleshooting
+    console.log('Countdown UE Format Data:', data);
+  } else {
+    // Traditional Franklin table format
+    const rows = [...block.children];
+    data = {
+      preMessage: cellText(rows[0]) || 'Countdown ends in:',
+      targetDate: cellText(rows[1]) || '',
+      postMessage: cellText(rows[2]) || 'Time has expired!',
+      fontColor: cellText(rows[3]) || '#ffffff',
+      backgroundColor: cellText(rows[4]) || '#772bcb',
+    };
+    
+    // Debug logging for troubleshooting
+    console.log('Countdown Table Format Data:', data);
+  }
 
   // Validate target date
   if (!data.targetDate) {
-    block.innerHTML = '<p style="color: red; padding: 20px;">Error: Please provide a target date for the countdown timer.</p>';
+    block.innerHTML = `
+      <div style="color: red; padding: 20px; border: 2px solid red; border-radius: 8px; background: #ffe6e6;">
+        <strong>Error: Missing Target Date</strong><br>
+        Please provide a target date for the countdown timer.<br>
+        Format: YYYY-MM-DD HH:MM:SS (e.g., 2024-12-25 23:59:59)
+      </div>
+    `;
+    console.error('Countdown Error: No target date provided', data);
     return;
   }
-
-  // Add variant class
-  block.classList.add(`countdown--${data.variant}`);
-
-  // Add variant class
-  block.classList.add(`countdown--${data.variant}`);
+  
+  // Validate date format
+  const targetDateObj = new Date(data.targetDate);
+  if (isNaN(targetDateObj.getTime())) {
+    block.innerHTML = `
+      <div style="color: red; padding: 20px; border: 2px solid red; border-radius: 8px; background: #ffe6e6;">
+        <strong>Error: Invalid Date Format</strong><br>
+        Target date "${data.targetDate}" is not valid.<br>
+        Please use format: YYYY-MM-DD HH:MM:SS (e.g., 2024-12-25 23:59:59)
+      </div>
+    `;
+    console.error('Countdown Error: Invalid date format', data.targetDate);
+    return;
+  }
 
   // Clear original content
   block.textContent = '';
