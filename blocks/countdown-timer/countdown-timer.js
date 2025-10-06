@@ -82,7 +82,7 @@ function updateCountdown(block, targetDate, postMessage) {
 }
 
 export default function decorate(block) {
-  block.classList.add('countdown');
+  block.classList.add('countdown-timer');
 
   let data = {};
   
@@ -106,7 +106,7 @@ export default function decorate(block) {
     };
     
     // Debug logging for troubleshooting
-    console.log('Countdown UE Format Data:', data);
+    console.log('Countdown Timer UE Format Data:', data);
   } else {
     // Traditional Franklin table format
     const rows = [...block.children];
@@ -119,7 +119,7 @@ export default function decorate(block) {
     };
     
     // Debug logging for troubleshooting
-    console.log('Countdown Table Format Data:', data);
+    console.log('Countdown Timer Table Format Data:', data);
   }
 
   // Validate target date
@@ -131,7 +131,7 @@ export default function decorate(block) {
         Format: YYYY-MM-DD HH:MM:SS (e.g., 2024-12-25 23:59:59)
       </div>
     `;
-    console.error('Countdown Error: No target date provided', data);
+    console.error('Countdown Timer Error: No target date provided', data);
     return;
   }
   
@@ -145,7 +145,7 @@ export default function decorate(block) {
         Please use format: YYYY-MM-DD HH:MM:SS (e.g., 2024-12-25 23:59:59)
       </div>
     `;
-    console.error('Countdown Error: Invalid date format', data.targetDate);
+    console.error('Countdown Timer Error: Invalid date format', data.targetDate);
     return;
   }
 

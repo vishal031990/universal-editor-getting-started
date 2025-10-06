@@ -407,7 +407,7 @@
     ]
   },
   {
-    "id": "countdown",
+    "id": "countdown-timer",
     "fields": [
       {
         "component": "text",
