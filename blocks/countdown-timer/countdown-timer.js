@@ -59,7 +59,7 @@ function updateCountdown(block, targetDate, postMessage) {
   const secondsEl = block.querySelector('.countdown-seconds');
   const preMessageEl = block.querySelector('.countdown-pre-message');
   const postMessageEl = block.querySelector('.countdown-post-message');
-  const timerEl = block.querySelector('.countdown-timer');
+  const timerEl = block.querySelector('.countdown-display');
 
   if (timeLeft.expired) {
     // Show post message and hide countdown
@@ -152,6 +152,13 @@ export default function decorate(block) {
   // Clear original content
   block.textContent = '';
 
+  // Debug: Add viewport info to help troubleshoot responsive issues
+  console.log('Countdown Timer Debug:', {
+    viewportWidth: window.innerWidth,
+    viewportHeight: window.innerHeight,
+    data: data
+  });
+
   // Create countdown structure
   const container = document.createElement('div');
   container.className = 'countdown-container';
@@ -166,7 +173,7 @@ export default function decorate(block) {
 
   // Countdown timer
   const timer = document.createElement('div');
-  timer.className = 'countdown-timer';
+  timer.className = 'countdown-display';
 
   // Time units
   const timeUnits = [
