@@ -10,13 +10,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 24px;
+  padding: 16px 20px;
   border-radius: 6px;
   text-align: center;
   font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   box-sizing: border-box;
   min-height: 60px;
-  max-width: 320px;
+  max-width: 290px;
   margin: 0 auto;
   position: relative;
 }
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 45px;
+  min-width: 60px;
 }
 
 .countdown-value {
@@ -76,7 +76,7 @@
   font-weight: 600;
   font-size: 20px;
   line-height: 28px;
-  padding: 0 4px;
+  padding: 0 8px;
   align-self: flex-start;
   margin-top: 0;
 }
@@ -108,7 +108,7 @@
   }
 
   .countdown-display {
-    gap: 6px;
+    gap: 20px;
   }
 
   .countdown-value {
@@ -119,7 +119,7 @@
   .countdown-separator {
     font-size: 28px;
     line-height: 36px;
-    padding: 0 6px;
+    padding: 0 12px;
   }
 
   .countdown-post-message {
@@ -128,7 +128,7 @@
   }
 
   .countdown-unit {
-    min-width: 60px;
+    min-width: 70px;
   }
 }
 
@@ -138,7 +138,8 @@
     padding: 40px 80px;
     min-height: 120px;
     border-radius: 12px;
-    max-width: none;
+    max-width: 100%;
+    width: 100%;
   }
 
   /* Debug indicator */
@@ -153,7 +154,7 @@
   }
 
   .countdown-display {
-    gap: 8px;
+    gap: 24px;
   }
 
   .countdown-value {
@@ -168,7 +169,7 @@
   .countdown-separator {
     font-size: 40px;
     line-height: 48px;
-    padding: 0 8px;
+    padding: 0 16px;
   }
 
   .countdown-post-message {
@@ -177,6 +178,6 @@
   }
 
   .countdown-unit {
-    min-width: 80px;
+    min-width: 90px;
   }
 }
